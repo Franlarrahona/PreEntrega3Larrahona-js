@@ -35,6 +35,8 @@ class prestamo{
 
 let HistorialPrestamos = []
 
+let HistorialPrestamosJson 
+
 
 //EVENTOS   
 
@@ -186,7 +188,7 @@ function recolectorDatos(){
     
     
     
-    console.log (nombre , apellido , dinero_pedido , num_cuotas)
+    //console.log (nombre , apellido , dinero_pedido , num_cuotas)
     
     
 
@@ -194,6 +196,11 @@ function recolectorDatos(){
 
     nuevo_prestamo = new prestamo(nombre , apellido, dinero_pedido , num_cuotas);
     HistorialPrestamos.push(nuevo_prestamo);
+
+    HistorialPrestamosJson = JSON.stringify(HistorialPrestamos);
+    localStorage.setItem("nuevo prestamo",HistorialPrestamosJson );
+
+
 
     console.log(HistorialPrestamos)
     
@@ -231,7 +238,8 @@ function compararNomb(){
         resultadosBusqueda.className = "resultadosBusqueda";
         document.body.append(resultadosBusqueda);
 
-
+        let HistorialPrestamosparse = JSON.parse(HistorialPrestamosJson);
+        console.log(HistorialPrestamosparse)
     console.log("<-------------------------->")
     console.log(`|NOMBRE:",data.nombre,"|APELLIDO:",data.apellido,"DINERO SOLICITADO:$", data.dinero_pedido, "|CANTIDAD DE CUOTAS:", data.num_cuotas,"CUOTAS|`);
     console.log("");
